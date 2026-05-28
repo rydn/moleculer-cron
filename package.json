@@ -1,6 +1,6 @@
 {
   "name": "moleculer-cron",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Mixin for Node-Cron",
   "main": "index.js",
   "types": "index.d.ts",
@@ -8,8 +8,10 @@
     "dev": "nodemon examples/index.js",
     "ci": "jest --watch",
     "lint": "eslint --ext=.js src test",
-    "deps": "npm-check -u",
     "test": "jest --coverage",
+    "typecheck": "tsc --noEmit",
+    "test:ts": "jest --testPathPattern=\\.ts$ --coverage",
+    "deps": "npm-check -u",
     "coverall": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "keywords": [
@@ -27,29 +29,42 @@
     "access": "public"
   },
   "peerDependencies": {
-    "moleculer": "^0.14.32"
+    "moleculer": "^0.15.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^22.0.0",
     "benchmarkify": "^4.0.0",
     "coveralls": "3.1.1",
     "eslint": "8.57.0",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
     "lolex": "^6.0.0",
-    "moleculer": "^0.14.32",
+    "moleculer": "^0.15.0",
     "moleculer-docgen": "^0.2.1",
     "nodemon": "^3.1.0",
-    "npm-check": "^3.2.10"
+    "npm-check": "^3.2.10",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.4.0"
   },
   "jest": {
+    "preset": "ts-jest",
     "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "testMatch": [
+      "**/test/**/*.spec.ts",
+      "**/test/**/*.spec.js"
+    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/test/services/"
     ]
   },
   "engines": {
-    "node": ">= 6.x.x"
+    "node": ">= 22.x.x"
   },
   "dependencies": {
     "cron": "^3.1.6"

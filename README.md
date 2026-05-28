@@ -12,6 +12,11 @@ Easy to use cron with Moleculer!
 $ npm install moleculer-cron --save
 ```
 
+## Requirements
+
+- **Moleculer**: ^0.15.0
+- **Node.js**: >=22.x (required by Moleculer 0.15)
+
 ## Usage
 
 ### Create cron service
